@@ -1,0 +1,92 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/bin/
+/build/
+/dist/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# VS Code
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables and config
+.env
+.env.local
+.env.*.local
+config.local.yaml
+config.local.yml
+*.local.yaml
+*.local.yml
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files
+*.log
+logs/
+log/
+
+# Frontend (React + Vite)
+web/node_modules/
+web/dist/
+web/build/
+web/.vite/
+web/coverage/
+
+# Frontend environment files
+web/.env
+web/.env.local
+web/.env.*.local
+
+# Package manager files
+web/package-lock.json
+web/yarn.lock
+web/pnpm-lock.yaml
+
+# Testing
+coverage.txt
+coverage.out
+test-results/
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+/temp/
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Fantasy league specific
+# Uncomment if you have sensitive league data files
+# league-data/
+# historical-imports/
+# backup-data/
+
+# TLS certificates (if generated locally)
+*.pem
+*.key
+*.crt
+*.cert
