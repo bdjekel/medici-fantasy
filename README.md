@@ -2,6 +2,8 @@ TODO: Refine AI-Generated README below.
 
 # medici-fantasy
 
+> Below are the proposed features for this package. The package is in the early stages of construction and has no functioning parts yet. This readme will be updated as the package progresses.
+
 # Fantasy Football League Analytics
 
 A custom fantasy football league management application that provides historical data and analytics not available on ESPN's platform. Built specifically for league commissioners and managers who want deeper insights into their league's history and performance.
