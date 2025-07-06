@@ -11,7 +11,10 @@ import (
 	"syscall"
 	"time"
 
+<<<<<<< HEAD
 	// TODO: add database connection
+=======
+>>>>>>> ca35746601705d675c623e98dc2446f61afff1e1
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
@@ -39,6 +42,7 @@ type Server struct {
 	server *http.Server
 }
 
+<<<<<<< HEAD
 
 // TODO: clever idea for router logic (from cursor). Consider implementing this.
 // handleRoutes handles all routing logic
@@ -56,6 +60,51 @@ type Server struct {
 // }
 
 
+=======
+// NewServer creates a new server instance
+func NewServer(port string) *Server {
+	server := &Server{
+		server: &http.Server{
+			Addr:         ":" + port,
+			Handler:      http.HandlerFunc(handleRoutes),
+			ReadTimeout:  15 * time.Second,
+			WriteTimeout: 15 * time.Second,
+			IdleTimeout:  60 * time.Second,
+		},
+	}
+	
+	return server
+}
+
+// handleRoutes handles all routing logic
+func handleRoutes(w http.ResponseWriter, r *http.Request) {
+	path := strings.TrimSuffix(r.URL.Path, "/")
+	
+	switch {
+	case path == "/health":
+		healthHandler(w, r)
+	case strings.HasPrefix(path, "/api/v1"):
+		apiHandler(w, r)
+	default:
+		http.NotFound(w, r)
+	}
+}
+
+// healthHandler handles health check requests
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	
+	response := Response{
+		Status:    "healthy",
+		Timestamp: time.Now(),
+	}
+	
+	writeJSON(w, http.StatusOK, response)
+}
+>>>>>>> ca35746601705d675c623e98dc2446f61afff1e1
 
 // apiHandler handles API requests
 func apiHandler(w http.ResponseWriter, r *http.Request) {
