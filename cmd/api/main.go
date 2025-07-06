@@ -2,12 +2,10 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
-	"strings"
 	"syscall"
 	"time"
 
@@ -39,7 +37,6 @@ type Server struct {
 	server *http.Server
 }
 
-<<<<<<< HEAD
 
 // TODO: clever idea for router logic (from cursor). Consider implementing this.
 // handleRoutes handles all routing logic
@@ -57,7 +54,6 @@ type Server struct {
 // }
 
 
-=======
 // NewServer creates a new server instance
 func NewServer(port string) *Server {
 	server := &Server{
@@ -73,44 +69,6 @@ func NewServer(port string) *Server {
 	return server
 }
 
-// apiHandler handles API requests
-func apiHandler(w http.ResponseWriter, r *http.Request) {
-	path := strings.TrimSuffix(r.URL.Path, "/")
-	
-	switch path {
-	case "/api/v1":
-		apiRootHandler(w, r)
-	default:
-		http.NotFound(w, r)
-	}
-}
-
-// apiRootHandler handles API root requests
-func apiRootHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-	
-	response := Response{
-		Message:   "API is running",
-		Version:   "1.0.0",
-		Timestamp: time.Now(),
-	}
-	
-	writeJSON(w, http.StatusOK, response)
-}
-
-// writeJSON writes a JSON response
-func writeJSON(w http.ResponseWriter, statusCode int, data interface{}) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(statusCode)
-	
-	if err := json.NewEncoder(w).Encode(data); err != nil {
-		log.Printf("Error encoding JSON: %v", err)
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
-	}
-}
 
 // Start starts the HTTP server
 func (s *Server) Start() error {
