@@ -1,3 +1,6 @@
+# This file is used for local development.
+# It is not used in the production environment.
+
 version: '3.8'
 
 services:
@@ -8,7 +11,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_HOST_AUTH_METHOD}
     ports:
       - "5432:5432"
     volumes:
